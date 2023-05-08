@@ -1,0 +1,25 @@
+
+START APLICATION
+
+source venv/bin/activate
+sudo docker
+sudo docker pc -a
+sudo docker start bc21bd1f093c
+
+mariadb -u root -p -h 172.17.0.2
+
+MariaDB [(none)]> show databases
+MariaDB [(none)]> CREATE DATABASE testing;
+MariaDB [(none)]> USE testing;
+
+MariaDB [testing]> CREATE DATABASE IF NOT EXISTS `hr` /*!40100 DEFAULT CHARACTER SET utf8 */;
+MariaDB [testing]> USE hr;
+MariaDB [hr]> CREATE TABLE IF NOT EXISTS `people` (
+                `name` varchar(40) DEFAULT NULL,
+                `address` varchar(12) DEFAULT NULL
+            );
+
+
+ALTER TABLE testing.people MODIFY COLUMN address varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL NULL;
+ALTER TABLE testing.people MODIFY COLUMN name varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL NULL;
+
