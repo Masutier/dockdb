@@ -1,0 +1,43 @@
+{% extends 'layout2.html' %}
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+    <div class="container mb-5">
+        <div class="col-11 mx-auto mt-5">
+            <h1>MONGODB</h1>
+            <h3>DataBase = mongodbase</h3>
+            <h3>Collection = customers</h3>
+        </div>
+        
+        <div class="col-11 mx-auto mt-5">
+            <a class="btn btn-primary" href="{{ url_for('insertMongodb') }}">Insert Data</a>
+        </div>
+
+
+        <hr>
+
+        <div class="col-11 mx-auto mt-5">
+
+            <div class="col-12 mb-4">
+                <table class="table table-dark table-striped">
+                    <tr>
+                        <th>Idcategoria</th>
+                        <th>Nombrecategoria</th>
+                        <th>Descripcion</th>
+                        <th>ACTION</th>
+                    </tr>
+                    {% for k in data %}
+                        <tr>
+                            <td>{{ k.Idcategoria }}</td>
+                            <td>{{ k.Nombrecategoria }}</td>
+                            <td>{{ k.Descripcion }}</td>
+                            <td><a class="btn btn-primary" href="{{ url_for('deleteRecordMongodb', pk=k._id) }}" method="POST">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
